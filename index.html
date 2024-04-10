@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box</title>
+    <style>
+        body{
+            margin: 0px;
+            
+        }
+
+        :root{
+            --width:200px;
+            --color: rgb(135, 12, 12);
+            --height: 200px
+        }
+        div{
+            width: var(--width);
+            height: var(--height);
+            background-color: var(--color);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+   
+<input  type="range" name = "width" min ="5" max = "1800" value="50" data-suffix="px">
+<input type="range" name = "height" min ="5" max = "1000" value="50" data-suffix="px">
+<input  type="color" name="color"  value="red">
+<div></div>
+
+<script>
+
+var inputs = document.querySelectorAll("input")
+
+function handle() {
+    var suffix = this.dataset.suffix || ""
+    console.log(this.value)
+    console.log(this.name)
+
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+
+
+}
+
+
+inputs.forEach(input => input.addEventListener("change", handle) )
+inputs.forEach(input => input.addEventListener("mousemove", handle) )
+
+
+
+
+
+</script>
+</body>
+</html>
